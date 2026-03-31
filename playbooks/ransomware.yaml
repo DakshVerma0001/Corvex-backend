@@ -1,0 +1,23 @@
+name: ransomware_containment
+version: "1.0"
+description: Contain ransomware attack
+
+triggers:
+  severity: ["CRITICAL"]
+  ttp: ["T1486"]
+
+risk_level: CRITICAL
+requires_approval: false
+timeout_seconds: 120
+
+steps:
+  - action: linux.firewall.block_ip
+    params:
+      ip: "{{ entity_id }}"
+    timeout_seconds: 30
+    on_failure: rollback
+
+rollback:
+  - action: linux.firewall.unblock_ip
+    params:
+      ip: "{{ entity_id }}"

@@ -1,0 +1,10 @@
+fastapi 
+uvicorn 
+pydantic 
+sqlalchemy 
+asyncpg 
+aio-pika 
+redis 
+httpx 
+python-dotenv 
+structlog
