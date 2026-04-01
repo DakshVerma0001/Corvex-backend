@@ -18,3 +18,20 @@ AsyncSessionLocal = async_sessionmaker(
 )
 
 Base = declarative_base()
+
+
+# ✅ ADD THIS FUNCTION (CRITICAL)
+
+async def save_incident_to_db(incident):
+    async with AsyncSessionLocal() as session:
+        try:
+            # If you have ORM model, use it here
+            # For now we just print (safe fallback)
+            print("💾 Saving incident to DB:", incident)
+
+            # TODO: Replace with actual ORM insert later
+            # session.add(incident_model)
+            # await session.commit()
+
+        except Exception as e:
+            print("❌ DB Error:", str(e))

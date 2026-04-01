@@ -8,3 +8,4 @@ redis
 httpx 
 python-dotenv 
 structlog
+prometheus-client==0.20.0
